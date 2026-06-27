@@ -5,22 +5,22 @@ option go_package = "sayfargo.url.v1;urlv1";
 package urlshortener;
 
 service UrlShortener {
-    rpc Short(ShortUrlRequest) returns (ShortUrlResponse);
-    rpc Get(GetShortedUrlRequest) returns (GetShortedUrlResponse);
+    rpc Create(CreateShortCodeRequest) returns (CreateShortCodeResponse);
+    rpc Get(GetUrlRequest) returns (GetUrlResponse);
 }
 
-message ShortUrlRequest {
+message CreateShortCodeRequest {
     string url = 1;
 }
 
-message ShortUrlResponse {
-    string shorted_url = 1;
+message CreateShortCodeResponse {
+    string short_code = 1;
 }
 
-message GetShortedUrlRequest {
-    string shorted_url = 1;
+message GetUrlRequest {
+    string short_code = 1;
 }
 
-message GetShortedUrlResponse {
+message GetUrlResponse {
     string url = 1;
 }
