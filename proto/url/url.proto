@@ -6,6 +6,7 @@ package urlshortener;
 
 service UrlShortener {
     rpc Short(ShortUrlRequest) returns (ShortUrlResponse);
+    rpc Get(GetShortedUrlRequest) returns (GetShortedUrlResponse);
 }
 
 message ShortUrlRequest {
@@ -13,5 +14,13 @@ message ShortUrlRequest {
 }
 
 message ShortUrlResponse {
+    string shorted_url = 1;
+}
+
+message GetShortedUrlRequest {
+    string shorted_url = 1;
+}
+
+message GetShortedUrlResponse {
     string url = 1;
 }

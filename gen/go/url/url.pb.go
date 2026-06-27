@@ -67,7 +67,7 @@ func (x *ShortUrlRequest) GetUrl() string {
 
 type ShortUrlResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	ShortedUrl    string                 `protobuf:"bytes,1,opt,name=shorted_url,json=shortedUrl,proto3" json:"shorted_url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -102,7 +102,95 @@ func (*ShortUrlResponse) Descriptor() ([]byte, []int) {
 	return file_url_url_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *ShortUrlResponse) GetUrl() string {
+func (x *ShortUrlResponse) GetShortedUrl() string {
+	if x != nil {
+		return x.ShortedUrl
+	}
+	return ""
+}
+
+type GetShortedUrlRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ShortedUrl    string                 `protobuf:"bytes,1,opt,name=shorted_url,json=shortedUrl,proto3" json:"shorted_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetShortedUrlRequest) Reset() {
+	*x = GetShortedUrlRequest{}
+	mi := &file_url_url_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetShortedUrlRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShortedUrlRequest) ProtoMessage() {}
+
+func (x *GetShortedUrlRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_url_url_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShortedUrlRequest.ProtoReflect.Descriptor instead.
+func (*GetShortedUrlRequest) Descriptor() ([]byte, []int) {
+	return file_url_url_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetShortedUrlRequest) GetShortedUrl() string {
+	if x != nil {
+		return x.ShortedUrl
+	}
+	return ""
+}
+
+type GetShortedUrlResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Url           string                 `protobuf:"bytes,1,opt,name=url,proto3" json:"url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetShortedUrlResponse) Reset() {
+	*x = GetShortedUrlResponse{}
+	mi := &file_url_url_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetShortedUrlResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetShortedUrlResponse) ProtoMessage() {}
+
+func (x *GetShortedUrlResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_url_url_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetShortedUrlResponse.ProtoReflect.Descriptor instead.
+func (*GetShortedUrlResponse) Descriptor() ([]byte, []int) {
+	return file_url_url_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetShortedUrlResponse) GetUrl() string {
 	if x != nil {
 		return x.Url
 	}
@@ -115,11 +203,18 @@ const file_url_url_proto_rawDesc = "" +
 	"\n" +
 	"\rurl/url.proto\x12\furlshortener\"#\n" +
 	"\x0fShortUrlRequest\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url\"$\n" +
-	"\x10ShortUrlResponse\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url2V\n" +
+	"\x03url\x18\x01 \x01(\tR\x03url\"3\n" +
+	"\x10ShortUrlResponse\x12\x1f\n" +
+	"\vshorted_url\x18\x01 \x01(\tR\n" +
+	"shortedUrl\"7\n" +
+	"\x14GetShortedUrlRequest\x12\x1f\n" +
+	"\vshorted_url\x18\x01 \x01(\tR\n" +
+	"shortedUrl\")\n" +
+	"\x15GetShortedUrlResponse\x12\x10\n" +
+	"\x03url\x18\x01 \x01(\tR\x03url2\xa6\x01\n" +
 	"\fUrlShortener\x12F\n" +
-	"\x05Short\x12\x1d.urlshortener.ShortUrlRequest\x1a\x1e.urlshortener.ShortUrlResponseB\x17Z\x15sayfargo.url.v1;urlv1b\x06proto3"
+	"\x05Short\x12\x1d.urlshortener.ShortUrlRequest\x1a\x1e.urlshortener.ShortUrlResponse\x12N\n" +
+	"\x03Get\x12\".urlshortener.GetShortedUrlRequest\x1a#.urlshortener.GetShortedUrlResponseB\x17Z\x15sayfargo.url.v1;urlv1b\x06proto3"
 
 var (
 	file_url_url_proto_rawDescOnce sync.Once
@@ -133,16 +228,20 @@ func file_url_url_proto_rawDescGZIP() []byte {
 	return file_url_url_proto_rawDescData
 }
 
-var file_url_url_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_url_url_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_url_url_proto_goTypes = []any{
-	(*ShortUrlRequest)(nil),  // 0: urlshortener.ShortUrlRequest
-	(*ShortUrlResponse)(nil), // 1: urlshortener.ShortUrlResponse
+	(*ShortUrlRequest)(nil),       // 0: urlshortener.ShortUrlRequest
+	(*ShortUrlResponse)(nil),      // 1: urlshortener.ShortUrlResponse
+	(*GetShortedUrlRequest)(nil),  // 2: urlshortener.GetShortedUrlRequest
+	(*GetShortedUrlResponse)(nil), // 3: urlshortener.GetShortedUrlResponse
 }
 var file_url_url_proto_depIdxs = []int32{
 	0, // 0: urlshortener.UrlShortener.Short:input_type -> urlshortener.ShortUrlRequest
-	1, // 1: urlshortener.UrlShortener.Short:output_type -> urlshortener.ShortUrlResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: urlshortener.UrlShortener.Get:input_type -> urlshortener.GetShortedUrlRequest
+	1, // 2: urlshortener.UrlShortener.Short:output_type -> urlshortener.ShortUrlResponse
+	3, // 3: urlshortener.UrlShortener.Get:output_type -> urlshortener.GetShortedUrlResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -159,7 +258,7 @@ func file_url_url_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_url_url_proto_rawDesc), len(file_url_url_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
