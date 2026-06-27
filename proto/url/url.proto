@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "sayfargo.url.v1;urlv1";
+
+package urlshortener;
+
+service UrlShortener {
+    rpc Short(ShortUrlRequest) returns (ShortUrlResponse);
+}
+
+message ShortUrlRequest {
+    string url = 1;
+}
+
+message ShortUrlResponse {
+    string url = 1;
+}
